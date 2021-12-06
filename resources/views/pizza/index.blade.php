@@ -31,6 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if (count($pizzas)>0)
                                     @foreach ($pizzas as $key => $pizza)
                                         <tr>
                                             <th scope="row">{{ $key+1 }}</th>
@@ -41,10 +42,13 @@
                                             <td>{{ $pizza->small_pizza_price }}</td>
                                             <td>{{ $pizza->medium_pizza_price }}</td>
                                             <td>{{ $pizza->large_pizza_price }}</td>
-                                            <td><button class="btn btn-primary">Edit</button></td>
+                                            <td><a href="{{ route('pizza.edit', $pizza->id) }}"><button class="btn btn-primary">Edit</button></a></td>
                                             <td><button class="btn btn-danger">Delete</button></td>
                                         </tr>
                                     @endforeach
+                                    @else 
+                                        <p>No Pizza to show</p>
+                                    @endif
                             </tbody>
                             {{-- </tbody> --}}
                         </table>
@@ -55,7 +59,8 @@
 
         <div class="col-md-4">
             <div class="card-body">
-                    <a href="{{ route('pizza.create') }}" class="list-group-item list-group-action">Create New Pizza</a>
+                    {{-- <a href="{{ route('pizza.create') }}" class="list-group-item list-group-action">Create New Pizza</a> --}}
+                    <button class="btn btn-success"><a href="{{ route('pizza.create') }}"></a>Create New Pizza</button>
             </div>
         </div>
     </div>
