@@ -52,6 +52,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card-body">
+                    <a href="{{ route('pizza.create') }}" class="list-group-item list-group-action">Create New Pizza</a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
