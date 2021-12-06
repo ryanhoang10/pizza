@@ -13,22 +13,26 @@
                     </ul>
                 </div>
             </div>
+            @if (count($errors) > 0)
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                            <p> {{ $error }} </p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Pizza') }}</div>
-                <form action="/pizza/store" method="post">@csrf
+                <form action="/pizza/store" method="post" enctype="multipart/form-data">@csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name of Pizza</label>
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                   <p> {{ $error }} </p>
-                                @endforeach
-                            </div>
-                        @endif
                             <input type="text" class="form-control" name="name" placeholder="name of pizza">
                         </div>
                         <div class="form-group">
